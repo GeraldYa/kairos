@@ -55,18 +55,16 @@ Conversation → Signal Capture → Daily Reflection → Persona Drift → Updat
 
 **5 layers, from surface to core:**
 
+<div align="center">
+<img src="docs/architecture.png" alt="Kairos 5-Layer Architecture" width="600">
+</div>
+
 ```
-┌─────────────────────────────────────┐
-│  🗣️  INTERACTION — conversations    │
-├─────────────────────────────────────┤
-│  🧠  MEMORY — signals & reflections │
-├─────────────────────────────────────┤
-│  📈  GROWTH — drift calculation     │
-├─────────────────────────────────────┤
-│  💫  SOUL — tone, style, personality│
-├─────────────────────────────────────┤
-│  🔒  IDENTITY — immutable baseline  │
-└─────────────────────────────────────┘
+🗣️  INTERACTION — conversations
+🧠  MEMORY — signals & reflections
+📈  GROWTH — drift calculation
+💫  SOUL — tone, style, personality
+🔒  IDENTITY — immutable baseline
 ```
 
 The bottom layer never changes. The top layers evolve.
@@ -155,14 +153,44 @@ Kairos 负责**人格成长**，你的现有工具负责知识和记忆，它们
 
 ---
 
+## Real-World Results / 真实案例
+
+We deployed Kairos on a live agent for 30 days. Here's what happened:
+
+| Dimension | Day 0 | Day 30 | What drove the change |
+|-----------|:---:|:---:|---|
+| verbosity | 6 | 3 | User consistently preferred short answers |
+| distance | 8 | 5 | User adopted casual tone, agent followed |
+| warmth | 3 | 5 | Approval signals for friendly interactions |
+| humor | 2 | 4 | User laughed → agent learned to be funnier |
+| proactivity | 4 | 7 | User said "just do it, don't ask" |
+| wit | — | 6 | *Self-discovered* from recurring approval patterns |
+
+**No prompt was manually edited. No fine-tuning was performed.**
+
+从死板的企业客服到简洁、温暖、主动的私人助手——完全由真实交互信号驱动，无需手动修改任何提示词。
+
+→ [Full case study with signal data](examples/)
+
+---
+
 ## Project Structure / 项目结构
 
 ```
 kairos/
 ├── README.md
 ├── LICENSE (MIT)
+├── scripts/
+│   └── reflect.py             # Daily reflection demo script
+├── examples/
+│   ├── README.md              # 30-day case study
+│   ├── signals-sample.jsonl   # Anonymized signal data
+│   ├── soul-before.md         # Initial soul state
+│   ├── soul-after.md          # Soul after 30 days
+│   └── changelog-sample.md    # Drift changelog
 ├── docs/
 │   ├── architecture.md        # 5-layer deep-dive
+│   ├── architecture.png       # Architecture diagram
 │   ├── signal-capture.md      # Detection & logging
 │   ├── persona-drift.md       # Drift mechanics
 │   └── daily-reflection.md    # Reflection algorithm
