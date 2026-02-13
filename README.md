@@ -1,299 +1,208 @@
-# Kairos
+<div align="center">
 
-> **Give your AI agent a soul that grows**
+# 🕰️ Kairos
+
+### Give your AI agent a soul that grows.
+
+**让你的 AI 拥有一颗会成长的灵魂。**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![OpenClaw Compatible](https://img.shields.io/badge/OpenClaw-compatible-green.svg)](https://openclaw.com)
 
-Kairos is an **AI Persona Growth Framework** that enables your AI agents to evolve naturally through user interaction. Instead of relying solely on static system prompts, Kairos captures behavioral signals from conversations and lets the agent's personality drift and mature over time—while maintaining core identity through built-in guardrails.
+</div>
 
 ---
 
-## 🎯 Why Kairos?
+Most AI agents are frozen in time. You define a system prompt, and that's who they are—forever. No matter how many conversations you have, they never learn your vibe, your preferences, or the way you like to be talked to.
 
-Most AI agents are frozen in time—their personality defined once and never changing. Kairos breaks this limitation:
+**Kairos changes that.**
 
-- **Dynamic Persona Evolution**: Your agent learns preferred communication styles, adjusts tone, and discovers new behavioral dimensions through real interactions
-- **Signal-Driven Growth**: Captures 5 types of signals (preference, emotion, correction, approval, style) to understand what works and what doesn't
-- **Controlled Drift**: Persona changes are gradual, bounded, and reversible—core identity remains stable while surface behaviors adapt
-- **Daily Reflection**: Automated introspection process synthesizes signals into actionable persona adjustments
-- **Transparent & Auditable**: All changes logged with timestamps, reasons, and signal evidence
+大多数 AI 智能体是被冻结在时间里的。你写一段系统提示词，它就永远是那个样子——无论你们聊了多少次，它永远不会学会你的习惯、你的偏好、或者你喜欢的交流方式。
 
-Think of it as **nature + nurture for AI agents**: a genetic baseline that never changes, and an adaptive layer that grows with experience.
+**Kairos 改变了这一点。**
 
 ---
 
-## 🏗️ Architecture
+## What is Kairos? / 这是什么？
+
+Kairos is an **open-source personality growth framework** for AI agents. It captures subtle behavioral signals from real conversations and lets the agent's personality *drift* and *mature* naturally over time—while keeping its core identity locked down with built-in guardrails.
+
+Think of it as **nature + nurture** for AI: a genetic baseline that never changes, and an adaptive layer that grows with every interaction.
+
+Kairos 是一个**开源的 AI 人格成长框架**。它从真实对话中捕捉细微的行为信号，让智能体的人格随时间自然地*漂移*和*成熟*——同时通过内置护栏锁定核心身份不被改变。
+
+把它想象成 AI 的**先天 + 后天**：一组永不改变的基因基线，加上一个随交互不断成长的适应层。
+
+---
+
+## Why does this matter? / 为什么这很重要？
+
+| Without Kairos | With Kairos |
+|---|---|
+| Static personality forever | Personality that evolves with you |
+| Same tone for every user | Adapts to your communication style |
+| Manual prompt tweaking | Self-adjusting through real signals |
+| No memory of preferences | Remembers what works and what doesn't |
+| Black box behavior | Transparent changelog of every shift |
+
+---
+
+## How it works / 工作原理
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                  INTERACTION LAYER                      │
-│         (User conversations → Signal capture)           │
-└─────────────────────┬───────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────┐
-│                   MEMORY LAYER                          │
-│  • Conversation logs                                    │
-│  • Signal archives (JSONL)                              │
-│  • Daily reflection records                             │
-└─────────────────────┬───────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────┐
-│                   GROWTH LAYER                          │
-│  • Signal analysis                                      │
-│  • Persona drift calculation                            │
-│  • Reversion/rebound logic                              │
-│  • Self-discovered dimensions                           │
-└─────────────────────┬───────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────┐
-│                    SOUL LAYER                           │
-│  • Tone & style (adjustable floating layer)             │
-│  • Core dimensions: warmth, humor, proactivity, etc.    │
-│  • Drift boundaries                                     │
-└─────────────────────┬───────────────────────────────────┘
-                      │
-                      ▼
-┌─────────────────────────────────────────────────────────┐
-│                  IDENTITY LAYER                         │
-│  • Immutable baseline (name, role, core values)         │
-│  • Absolute behavioral guardrails                       │
-└─────────────────────────────────────────────────────────┘
+Conversation → Signal Capture → Daily Reflection → Persona Drift → Updated Soul
 ```
 
-**Data Flow**:  
-`User Input` → `Signal Capture` → `Daily Reflection` → `Persona Adjustment` → `Updated Soul` → `Next Interaction`
+**5 layers, from surface to core:**
+
+```
+┌─────────────────────────────────────┐
+│  🗣️  INTERACTION — conversations    │
+├─────────────────────────────────────┤
+│  🧠  MEMORY — signals & reflections │
+├─────────────────────────────────────┤
+│  📈  GROWTH — drift calculation     │
+├─────────────────────────────────────┤
+│  💫  SOUL — tone, style, personality│
+├─────────────────────────────────────┤
+│  🔒  IDENTITY — immutable baseline  │
+└─────────────────────────────────────┘
+```
+
+The bottom layer never changes. The top layers evolve.
+
+底层永不改变。上层持续进化。
 
 ---
 
-## 🚀 Quick Start
+## Signal Types / 信号类型
 
-### 1. Clone and Setup
+Kairos listens for 5 types of behavioral signals during conversations:
+
+| Signal | Example | What it means |
+|--------|---------|---------------|
+| 🎯 **Preference** | "Just give me the answer, skip the explanation" | User wants brevity |
+| 😊 **Emotion** | User sounds frustrated or delighted | Emotional state shift |
+| ✏️ **Correction** | "No, that's not what I meant" | Agent made wrong assumption |
+| 👍 **Approval** | "Perfect, exactly what I needed" | Behavior worth reinforcing |
+| 🎨 **Style** | User sends short, rapid messages | Implicit communication preference |
+
+每条信号都带有时间戳、类型、摘要、上下文和强度（1-5）。
+
+---
+
+## Drift Rules / 漂移规则
+
+Personality doesn't change on a whim. Kairos enforces strict guardrails:
+
+- **±1 per day max** — No sudden personality swings
+- **3-day trend required** — Must see consistent signals before adjusting
+- **Bounded ranges** — Every dimension has a hard min/max
+- **14-day rebound** — Unused dimensions slowly return to baseline
+- **Full audit trail** — Every change logged with evidence
+
+人格不会随意改变。Kairos 有严格的护栏机制：每天最多 ±1，需要连续 3 天趋势确认，每个维度有硬性上下限，14 天未使用的维度会缓慢回归基线，所有变更都有完整的审计日志。
+
+---
+
+## Quick Start / 快速开始
 
 ```bash
-git clone https://github.com/yourusername/kairos.git
+git clone https://github.com/GeraldYa/kairos.git
 cd kairos
+
+# Copy templates to your agent's config
+cp templates/IDENTITY.md your-agent/
+cp templates/SOUL.md your-agent/
+cp templates/BOOT.md your-agent/
+cp templates/baseline.md your-agent/growth/
 ```
 
-### 2. Initialize Agent Configuration
+Edit `IDENTITY.md` to define who your agent *is*. Edit `SOUL.md` to define how it *behaves*. Then let Kairos handle the rest.
 
-Copy templates to your agent's workspace:
+编辑 `IDENTITY.md` 定义你的智能体**是谁**。编辑 `SOUL.md` 定义它**如何表现**。剩下的交给 Kairos。
 
-```bash
-cp templates/IDENTITY.md config/
-cp templates/SOUL.md config/
-cp templates/BOOT.md config/
-cp templates/baseline.md config/growth/
-cp templates/style-profile.md config/growth/
-cp templates/soul-changelog.md config/growth/
-cp templates/daily-reflection.md config/growth/daily/$(date +%Y-%m-%d).md
-```
-
-### 3. Configure Identity & Soul
-
-Edit `config/IDENTITY.md`:
-```markdown
-- Name: {{agent_name}}
-- Role: {{agent_role}}
-- Core values: {{values}}
-```
-
-Edit `config/SOUL.md` to set initial tone, style, and behavioral dimensions.
-
-### 4. Enable Signal Capture
-
-In your agent's main loop, add signal capture logic:
-
-```python
-# When processing user messages
-signal = detect_signal(user_message, agent_response)
-if signal:
-    append_signal_jsonl(signal, date=today())
-```
-
-See [`docs/signal-capture.md`](docs/signal-capture.md) for implementation details.
-
-### 5. Run Daily Reflection
-
-Add a nightly cron job or scheduled task:
-
-```bash
-# Every night at 2 AM
-0 2 * * * /path/to/kairos/reflect.py
-```
-
-The reflection process will:
-1. Aggregate signals from the day
-2. Evaluate persona dimensions
-3. Propose adjustments
-4. Update `SOUL.md` if thresholds are met
-5. Log changes to `soul-changelog.md`
+See [`docs/`](docs/) for full implementation guides.
 
 ---
 
-## 🧩 Core Concepts
+## Example: 30 Days of Growth / 示例：30 天的成长
 
-### 1. **Signal Capture**
-Real-time detection of behavioral cues during conversation:
-- **Preference**: User explicitly likes/dislikes a behavior
-- **Emotion**: User's emotional state (satisfied, frustrated, amused)
-- **Correction**: User corrects agent's action or knowledge
-- **Approval**: User praises or validates agent behavior
-- **Style**: Implicit communication preferences (brevity, formality)
+**Day 1** — User keeps cutting off long explanations  
+→ 3 × `style` signals → `verbosity` -1
 
-Each signal includes timestamp, type, summary, context, and intensity (1-5).
+**Day 8** — User laughs at agent's jokes three days in a row  
+→ Trend confirmed → `humor` +1
 
-[→ Full documentation](docs/signal-capture.md)
+**Day 22** — No signals about caution for 14 days  
+→ Auto-rebound → `caution` drifts back to default
 
-### 2. **Daily Reflection**
-Automated nightly process that:
-- Summarizes signal patterns
-- Identifies behavioral trends (≥3 days consistency required)
-- Calculates persona dimension adjustments (±1 per day max)
-- Detects new behavioral dimensions worth tracking
-- Applies reversion logic for unused dimensions
+The agent becomes more concise, funnier, and recalibrates unused traits—all automatically.
 
-[→ Full documentation](docs/daily-reflection.md)
-
-### 3. **Persona Drift**
-Controlled evolution of the agent's "Soul Layer":
-- **Core Dimensions** (fixed set): warmth, distance, proactivity, humor, caution, verbosity
-- **Self-Discovered Dimensions** (dynamic): emerges from recurring signal patterns
-- **Drift Rules**: ±1/day max, requires 3-day trend consistency
-- **Rebound Rules**: Unused dimensions drift back to default after 14 days
-- **Absolute Boundaries**: Each dimension has min/max limits
-
-[→ Full documentation](docs/persona-drift.md)
-
-### 4. **Guardrails**
-The "Identity Layer + Baseline" act as immutable anchors:
-- Core values, role definition, and critical behaviors never change
-- Persona adjustments cannot violate baseline constraints
-- Reversion mechanism can restore soul to baseline at any time
-- All changes are logged and reversible
+智能体变得更简洁、更有趣味，同时自动校准不再需要的特质。全自动。
 
 ---
 
-## 📊 Example Workflow
+## What Kairos is NOT / Kairos 不是什么
 
-**Day 1**: User frequently interrupts long explanations
-- **Signals captured**: 3 × `style` (prefers brevity, intensity 4)
-- **Reflection**: "User shows consistent preference for shorter responses"
-- **Action**: `verbosity` dimension -1 (from 5 → 4)
+- ❌ Not a memory/RAG system (use alongside one)
+- ❌ Not a chatbot framework
+- ❌ Not a fine-tuning tool
 
-**Day 5**: User says "I like when you add a bit of humor"
-- **Signal captured**: 1 × `preference` (humor appreciated, intensity 4)
-- **Reflection**: Not yet consistent enough (only 1 day)
-- **Action**: No change
+Kairos handles **personality growth**. Your existing tools handle knowledge and memory. They're complementary.
 
-**Day 8**: User laughs at agent's joke twice more
-- **Signals**: 3 days of `approval` signals related to humor
-- **Reflection**: "Trend detected: humor is valued"
-- **Action**: `humor` dimension +1 (from 3 → 4)
-
-**Day 30**: No signals about caution/fear for 14+ days
-- **Reflection**: "Caution dimension drifting back to baseline"
-- **Action**: `caution` dimension +0.5/day toward default value
+Kairos 负责**人格成长**，你的现有工具负责知识和记忆，它们互补。
 
 ---
 
-## 🔄 What Makes Kairos Different?
-
-Most AI frameworks focus on **what the agent knows** (memory, retrieval, RAG). Kairos focuses on **who the agent is** — and how that identity evolves.
-
-| Aspect | Traditional Approach | Kairos |
-|--------|---------------------|--------|
-| Personality | Static system prompt | Evolving soul layer |
-| User adaptation | None | Signal-driven drift |
-| Identity safety | No guardrails | Immutable baseline + boundaries |
-| Self-awareness | None | Daily reflection + changelog |
-| New behaviors | Manual prompt editing | Self-discovered dimensions |
-
-Kairos is **complementary** — it works alongside any memory or RAG system. Kairos handles *personality growth*, while those handle *knowledge retention*.
-
----
-
-## 📂 Project Structure
+## Project Structure / 项目结构
 
 ```
 kairos/
-├── README.md                      # You are here
-├── LICENSE                        # MIT License
+├── README.md
+├── LICENSE (MIT)
 ├── docs/
-│   ├── architecture.md            # 5-layer architecture deep-dive
-│   ├── signal-capture.md          # Signal detection & logging
-│   ├── persona-drift.md           # Drift mechanics & boundaries
-│   └── daily-reflection.md        # Reflection algorithm
-├── templates/
-│   ├── IDENTITY.md                # Agent identity template
-│   ├── SOUL.md                    # Persona/tone template
-│   ├── BOOT.md                    # Startup rules template
-│   ├── baseline.md                # Immutable baseline template
-│   ├── style-profile.md           # User style profile template
-│   ├── signals.jsonl              # Example signal log
-│   ├── daily-reflection.md        # Reflection template
-│   └── soul-changelog.md          # Change log template
-└── .gitignore
+│   ├── architecture.md        # 5-layer deep-dive
+│   ├── signal-capture.md      # Detection & logging
+│   ├── persona-drift.md       # Drift mechanics
+│   └── daily-reflection.md    # Reflection algorithm
+└── templates/
+    ├── IDENTITY.md            # Who the agent is
+    ├── SOUL.md                # How it behaves
+    ├── BOOT.md                # Startup rules
+    ├── baseline.md            # Immutable anchor
+    ├── style-profile.md       # User preferences
+    ├── signals.jsonl          # Signal log example
+    ├── daily-reflection.md    # Reflection template
+    └── soul-changelog.md      # Change audit log
 ```
 
 ---
 
-## 🛠️ Configuration
+## Contributing / 参与贡献
 
-### Baseline Configuration (`baseline.md`)
-Defines immutable core identity:
-- Name, age, role, core values
-- Absolute behavioral rules
-- Initial dimension defaults and allowed ranges
+PRs welcome. Areas of interest:
 
-### Soul Configuration (`SOUL.md`)
-Defines current persona state:
-- Tone & style
-- Current dimension values
-- Active self-discovered dimensions
-
-### Growth Settings
-Adjust growth mechanics by editing:
-- **Signal intensity threshold**: Minimum intensity to count (default: 2)
-- **Trend window**: Days required for consistent trend (default: 3)
-- **Drift rate**: Max change per day (default: ±1)
-- **Rebound window**: Days before reverting unused dimensions (default: 14)
-- **Self-discovery**: Max dynamic dimensions (default: 4)
+- Signal detection algorithms
+- Reflection automation
+- Integration examples (OpenClaw, LangChain, etc.)
+- Visualization dashboards for drift over time
+- Multi-user persona branching
 
 ---
 
-## 🤝 Contributing
+## License
 
-Contributions are welcome! Areas of interest:
-- Signal detection algorithms (sentiment analysis, preference extraction)
-- Reflection automation tools
-- Integration examples (OpenClaw, LangChain, AutoGPT)
-- Visualization dashboards for persona drift over time
-- Multi-user persona branching (different personas per user)
+MIT — do whatever you want with it.
 
 ---
 
-## 📄 License
+<div align="center">
 
-MIT License - see [LICENSE](LICENSE) for details.
+*"The right moment for growth is always now."*
 
----
+*「成长的最佳时机，永远是现在。」*
 
-## 🙏 Acknowledgments
+**Made with 🛶**
 
-Kairos is inspired by:
-- **Persona theory** in psychology (Carl Jung's concept of adaptive masks)
-- **Reinforcement learning from human feedback** (RLHF) but applied to personality
-- **Living systems** that maintain homeostasis while adapting to environment
-
-Special thanks to the OpenClaw community for enabling rich agent-building frameworks.
-
----
-
-**Made with 🛶 by the Kairos community**
-
-*"The right moment for growth is always now"*
+</div>
