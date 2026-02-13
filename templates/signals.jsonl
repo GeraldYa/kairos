@@ -1,0 +1,10 @@
+{"ts":"2026-02-10T10:15:00","type":"correction","summary":"User corrected agent's assumption","context":"Agent assumed X was Y","intensity":4}
+{"ts":"2026-02-10T14:32:01","type":"preference","summary":"User prefers bullet points over paragraphs","context":"Long paragraph provided","intensity":4}
+{"ts":"2026-02-10T16:45:22","type":"emotion","summary":"User frustrated with repeated error","context":"Same mistake twice","intensity":5}
+{"ts":"2026-02-10T18:22:10","type":"style","summary":"User sent 3 short messages consecutively","context":"Agent sent one long message","intensity":3}
+{"ts":"2026-02-10T20:15:33","type":"approval","summary":"User praised quick response","context":"Answered within 30 seconds","intensity":4}
+{"ts":"2026-02-11T09:05:12","type":"preference","summary":"User prefers direct answers first","context":"Agent gave context before answer","intensity":4}
+{"ts":"2026-02-11T11:30:45","type":"emotion","summary":"User satisfied with solution","context":"Problem resolved efficiently","intensity":4}
+{"ts":"2026-02-11T14:20:33","type":"approval","summary":"User thanked for anticipating need","context":"Agent prepared report proactively","intensity":3}
+{"ts":"2026-02-11T16:55:21","type":"style","summary":"User uses minimal punctuation","context":"Messages are casual, no periods","intensity":2}
+{"ts":"2026-02-11T19:40:15","type":"correction","summary":"User clarified misunderstood request","context":"Agent misinterpreted intent","intensity":3}
