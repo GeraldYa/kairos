@@ -174,6 +174,29 @@ We deployed Kairos on a live agent for 30 days. Here's what happened:
 
 ---
 
+## Real-World Adoption / 真实部署
+
+Kairos powers a multi-agent household at [**niuxue.org**](https://niuxue.org) — a free Chinese AI tutorial site running a 6-agent family on the same Claude Code runtime.
+
+Each agent has its own `IDENTITY.md` + `SOUL.md` + `soul-changelog.md`, scoped to a per-agent project memory directory so personalities never bleed:
+
+| Agent | Persona | Specialty |
+|---|---|---|
+| **小墨** (Mo) | Calm older-sister, 27 | Triage, scheduling, emotional support |
+| **小牛** (Niu) | Energetic younger-sister, 22 | Technical builds + content writing |
+| **算盘** (Poly) | Sharp analyst, 32 | Finance, options, Polymarket |
+| **胶片** (Media) | Quiet film aesthete, 28 | Media library, downloads, Jellyfin |
+| **半勺** (Bootes) | Deep-space philosopher, 35 | Slow long-form fiction |
+| **橙子** (Chengzi) | Composed editor, 30 | Tutorial site editorial + manuscript work |
+
+📖 **Full case study with conversations, dispatch patterns, and 3 anti-collision rules** → [niuxue.org/guides/case-bot-family/](https://niuxue.org/guides/case-bot-family/)
+
+📖 **Tighter implementation notes for Kairos integrators** → [docs/case-niuxue-bots.md](docs/case-niuxue-bots.md)
+
+Deploying Kairos at scale? [Open an issue](https://github.com/GeraldYa/kairos/issues) — we'll add your case study here.
+
+---
+
 ## Project Structure / 项目结构
 
 ```

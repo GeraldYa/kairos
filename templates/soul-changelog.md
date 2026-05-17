@@ -21,50 +21,51 @@ This file is **append-only** and automatically updated by the daily reflection p
 5. **Reason**: Why this change was made (signal summary)
 6. **Evidence**: Signal timestamps or IDs supporting the change
 
-### Example Entries:
+### Example Entries (excerpted from a real Kairos deployment, anonymised):
 
 ```markdown
-# SOUL Changelog — Atlas
+# SOUL Changelog — Niu
 
 ---
 
-## 2026-02-12
-- **warmth**: 5 → 6 (+1)
-- **Reason**: 3-day trend of positive emotional signals; user responded well to empathetic tone
-- **Evidence**: 2026-02-10 (emotion, intensity 4), 2026-02-11 (approval, intensity 3), 2026-02-12 (emotion, intensity 5)
-
-- **verbosity**: 5 → 4 (-1)
-- **Reason**: User explicitly requested shorter responses multiple times
-- **Evidence**: 2026-02-10 (preference, intensity 4), 2026-02-11 (style, intensity 3), 2026-02-12 (preference, intensity 5)
+## 2026-05-04
+- **proactivity**: 8 → 7 (-1)
+- **Reason**: User flagged a speculative-send incident — agent dispatched a wrong instruction to another bot rather than admitting it couldn't do the task
+- **Evidence**: 2026-05-04 (correction, intensity 5), surfaced rule "no speculative send"
 
 ---
 
-## 2026-02-15
-- **New dimension added**: anticipation (default 5, range 1-10)
-- **Reason**: 4 days of approval signals for proactive behavior
-- **Evidence**: 2026-02-12 (approval), 2026-02-13 (approval), 2026-02-14 (approval), 2026-02-15 (approval)
+## 2026-05-06
+- **(no change)**
+- **Observation**: 1 negative signal on proactivity (speculative path again), 1 positive signal (correctly admitted limit). Signals cancel — no drift today.
 
 ---
 
-## 2026-02-20
-- **humor**: 5 → 5.5 (+0.5)
-- **Reason**: Rebounding from 4 toward default (unused for 14 days)
-- **Evidence**: No humor-related signals since 2026-02-05
+## 2026-05-14
+- **playfulness**: 9 → 9 (no change)
+- **affection**: 7 → 8 (+1)
+- **Reason**: 3-day trend of warm responses from user during a stressful work week; consistent approval signals for attentive tone
+- **Evidence**: 2026-05-12 (emotion, intensity 4), 2026-05-13 (approval, intensity 4), 2026-05-14 (approval, intensity 5)
 
 ---
 
-## 2026-03-10
-- **Dimension removed**: anticipation
-- **Reason**: No related signals for 30+ consecutive days
-- **Evidence**: Last signal 2026-02-08
+## 2026-05-16
+- **verbosity**: 7 → 6 (-1)
+- **Reason**: User repeatedly cut responses short during a long content-production session; preference for tighter replies confirmed across 3 days
+- **Evidence**: 2026-05-14 (preference, intensity 4), 2026-05-15 (style, intensity 4), 2026-05-16 (preference, intensity 5)
+
+- **caution**: 5 → 6 (+1)
+- **Reason**: Two real incidents on the same day where the agent acted before fully reading the user's message; standing rule added — "read every word before acting"
+- **Evidence**: 2026-05-16 (correction, intensity 5) × 2
 
 ---
 
-## 2026-03-15
-- **Manual reversion to baseline**
-- **Reason**: Administrator reset
-- **Action**: All dimensions restored to baseline defaults
+## 2026-05-17
+- **(no change)**
+- **Observation**: Recovery day — no new signals after yesterday's caution bump. Trend monitoring continues.
 ```
+
+> Above entries are excerpted and anonymised from the [niuxue.org](https://niuxue.org) production deployment. See [`docs/case-niuxue-bots.md`](../docs/case-niuxue-bots.md).
 
 ### Audit Uses:
 - Track persona evolution over time
